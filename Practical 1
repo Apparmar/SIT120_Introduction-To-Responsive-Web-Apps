@@ -1,40 +1,168 @@
+------------------------ HTML--------------------------------
+
 <!DOCTYPE html>
-<!-- saved from url=(0052)https://jsfiddle.net/AmitParmar17/g85zbfkr/145/show/ -->
-<html><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<HTML>
+
+  <HEAD>
+    <TITLE>Practical One.</TITLE>
+    <style>
+* {
+  box-sizing: border-box;
+  }
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+  </HEAD>
+
+  <BODY style ="background-color:#9AE1EE">
+    <H3>
+      This is an example for different styles for font formatting.
+    </H3>
+    <P>
+        <B>Bold font.</B><BR/><I>Italic font.</I><BR/><U>Underline font.</U>     
+    </P>
     
-    
-    <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Practical 1 - JSFiddle</title>
-
-      <meta name="robots" content="index, follow">
-      <meta name="googlebot" content="index, follow">
-
-      <script type="text/javascript">
-        var height
-        var force_height = null
-        var slug = "g85zbfkr"
-        var show_src = "//fiddle.jshell.net/AmitParmar17/g85zbfkr/145/show/light/"
-        var resize_element_counter = 0
-        var shell_edit_url = "/AmitParmar17/g85zbfkr/145/light/"
-      </script>
-
-      <script src="./Practical 1 - JSFiddle_files/embed.js.download"></script>
-      <link rel="stylesheet" media="screen" href="./Practical 1 - JSFiddle_files/embed-light.css">
-      <link rel="icon" href="https://jsfiddle.net/img/favicon.png">
-  </head>
-  <body id="sylvester-standalone">
-    <a class="toEditor" href="https://jsfiddle.net/AmitParmar17/g85zbfkr/145/" target="_blank">
-      <svg width="34" height="40">
-      <use xlink:href="//jsfiddle.net/sprite.svg#logo"></use>
-    </svg>Edit in JSFiddle
-    </a>
-
-    <div id="result">
-      
-    <iframe src="./Practical 1 - JSFiddle_files/saved_resource.html" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-downloads allow-modals allow-popups" allow="midi; geolocation; microphone; camera; display-capture; encrypted-media;"></iframe></div>
-
-    
+    <!-- Example of images-->
+    <IMG SRC="a.png" alt="Example image">  
+    <br>
+     <!-- Example of Link-->
+    <a href="https://www.google.com/" target="_blank">Visit Google</a>    
+  </BODY>
+  <div class = "row" >
   
+<div class = "column"  style="background-color:#4B76C4;">
+     <!-- Example of ordered list-->
+     <OL type = "i">
+       <LI>List Item 1</LI>
+       <LI>List Item 2</LI>
+       <LI>List Item 3</LI>
+      </OL>
+     
+     <!-- Example of unordered list-->
+     <UL type = "square">
+       <LI>List Item 1</LI>
+       <LI>List Item 2</LI>
+       <LI>List Item 3</LI>
+      </UL>
+</div>
+<div class = "column"  style="background-color:#EE9AC6;">
+     <!-- Example of form-->
+     <FORM>
+       Text input: <input type="text" size=15 maxlength=15 id="TI" label="Text input">
+       <br>Result<br>
+ Pass: <input type="radio" NAME="Result" value="Pass">
+ Fail: <input type="radio" NAME="Result" value="Fail">
 
-</body></html>
+<br>Tasks completed for: <br>
+ P: <input type="checkbox" NAME="Grade" value="P">
+ C: <input type="checkbox" NAME="Grade" value="C">
+ D: <input type="checkbox" NAME="Grade" value="D">
+ HD: <input type="checkbox" NAME="Grade" value="HD">
+ <br>
+ <input type="submit" value="Submit">
+ <input type="reset" value="Reset"> 
+     </FORM>
+ </div>
+
+</div>
+
+<div>
+   <!-- JavaScript example-->
+   <p id="jsExample">
+     This content will be changed on click of button.
+   </p>
+   <button type="button" onclick="example()">Click here
+     
+   </button>
+
+   <p id="dateTimeExample">
+      Show date time here.
+   </p>  
+   <button type="button" onclick="showDate()">Show Date-time       
+   </button>
+
+</div>
+
+<div>
+  <table>
+    <th>Student Marks</th>
+    <tr></tr>
+      <td>Unit 1</td>
+      <td id="unit1">50</td>      
+    <tr></tr>
+    <tr></tr>
+      <td>Unit 2</td>
+      <td id="unit2">60</td>      
+    <tr></tr>
+    <tr></tr>
+      <td>Unit 3</td>
+      <td id="unit3">70</td>      
+    <tr></tr>
+    <tr></tr>
+      <td>
+           <button type="button" onclick="total()">Total     
+           </button>
+      </td >
+      <td id="total"></td>      
+    <tr></tr>
+</table>
+</div>
+
+</HTML>
+
+
+
+-------------------- CSS ------------------------------
+a:link{
+  color: red;
+}
+a:active{
+  color: yellow;
+}
+a:hover{
+  color: green;
+}
+a:visited{
+  color: blue;
+}
+
+ .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+P{
+  color: navy;
+  text-align:right
+  text-indent: 30px;
+}
+
+
+---------------------------------- JS --------------------------------------
+	function total(){
+    var marks1 = parseInt(document.getElementById("unit1").innerHTML);  
+    var marks2 = parseInt(document.getElementById("unit2").innerHTML);   
+    var marks3 = parseInt(document.getElementById("unit3").innerHTML);  
+    
+    
+    document.getElementById("total").innerHTML = marks1 + marks2 + marks3;
+  }
+  
+  function showDate(){
+    var today = new Date();
+		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+    document.getElementById("dateTimeExample").innerHTML = date;  
+  }
+  
+  function example(){
+  	document.getElementById("jsExample").innerHTML = "You have changed the content using JavaScript";
+  }
+  
+  
+  
