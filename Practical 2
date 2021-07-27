@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="a.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <a class="active" href="#home">
+  <img src="Images\house.png" style="width:30px;height:30px;"></img> Home</a>
+  <a href="#"><img src="Images\login.png" style="width:30px;height:30px;"></img> Login</a>
+  <a href="#"><img src="Images\submit.png" style="width:30px;height:30px;"></img> New Submission</a>
+  <a href="#"><img src="Images\flask.png" style="width:30px;height:30px;"></img> View Results</a>
+  <a href="#"><img src="Images\report.png" style="width:30px;height:30px;"></img> View Report</a>
+  <a href="#"><img src="Images\logout.png" style="width:30px;height:30px;"></img> View Invoice	</a>  
+</div>
+
+<div class="content">
+  <h2>Welcome to ABC Food Testing Facilities</h2>
+  <div style="background-image: url('Images\Main2.jpg');"></div>
+  <p></p>
+  <h3>Resize the browser window to see the effect.</h3>
+</div>
+
+</body>
+</html>
