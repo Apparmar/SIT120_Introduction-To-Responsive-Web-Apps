@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="a.css">
-</head>
-<body>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css\Main.css">
+	</head>
+	<body>
+		<div class="menu">
+		  <a class="active" href="Index.html"><img src="Images\house.png" class="menuImage" ></img> Home</a>
+		  <a href="Login.html"><img src="Images\login.png" class="menuImage" ></img> Login</a>
+		  <a href="#"><img src="Images\submit.png" class="menuImage"></img> New Submission</a>
+		  <a href="#"><img src="Images\flask.png" class="menuImage"></img> View Results</a>
+		  <a href="#"><img src="Images\report.png" class="menuImage"></img> View Report</a>
+		  <a href="#"><img src="Images\logout.png" class="menuImage"></img> Exit</a>  
+		</div>
 
-<div class="sidebar">
-  <a class="active" href="#home">
-  <img src="Images\house.png" style="width:30px;height:30px;"></img> Home</a>
-  <a href="#"><img src="Images\login.png" style="width:30px;height:30px;"></img> Login</a>
-  <a href="#"><img src="Images\submit.png" style="width:30px;height:30px;"></img> New Submission</a>
-  <a href="#"><img src="Images\flask.png" style="width:30px;height:30px;"></img> View Results</a>
-  <a href="#"><img src="Images\report.png" style="width:30px;height:30px;"></img> View Report</a>
-  <a href="#"><img src="Images\logout.png" style="width:30px;height:30px;"></img> View Invoice	</a>  
-</div>
+		<div class="content">
+		  <h2>Welcome to ABC Food Testing Facilities</h2>
+		  <div style="background-image: url('Images\Main2.jpg');"></div>
+		  <p></p>		
 
-<div class="content">
-  <h2>Welcome to ABC Food Testing Facilities</h2>
-  <div style="background-image: url('Images\Main2.jpg');"></div>
-  <p></p>
-  <h3>Resize the browser window to see the effect.</h3>
-</div>
-
-</body>
+		<iframe width="420" height="345" src="https://www.youtube.com/embed/OEK0VHX1tMM">
+		</iframe>
+		  
+		</div>
+	</body>
 </html>
 
 
 
 
 ---------------- CSS ------------------
-<style>
 body {
   margin: 0;
   font-family: "Times New Roman", Times, Serif;
 }
 
-.sidebar {
+.menu {
   margin: 0;
   padding: 0;
   width: 200px;
@@ -46,43 +45,47 @@ body {
   overflow: auto;
 }
 
-.sidebar a {
+.menu a {
   display: block;
   color: black;
-  padding: 16px;
+  padding: 10px;
   text-decoration: none;
 }
  
-.sidebar a.active {
+.menu a.active {
   background-color: #e6b800;
   color: white;
 }
 
-.sidebar a:hover:not(.active) {
+.menu a:hover:not(.active) {
   background-color: #806600;
   color: white;
 }
 
 div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
+  margin-left: 35%;
+  padding: 1px 10px;
+  height: 100%;
 }
 
 @media screen and (max-width: 700px) {
-  .sidebar {
+  .menu {
     width: 100%;
     height: auto;
     position: relative;
   }
-  .sidebar a {float: left;}
+  .menu a {float: left;}
   div.content {margin-left: 0;}
 }
 
 @media screen and (max-width: 400px) {
-  .sidebar a {
+  .menu a {
     text-align: center;
     float: none;
   }
 }
-</style>
+
+.menu .menuImage {
+	width:30px;
+	height:30px;
+}
