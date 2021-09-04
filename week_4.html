@@ -1,0 +1,169 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>test</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		
+	</head>
+	<body>
+		<!-- Vue app 1 -->
+		<div id="app">
+			{{message}}
+			<h1>{{test}}</h1>
+		</div>
+
+		<!-- Vue app 2 -->
+		<div id="app-2">
+		  <span v-bind:title="message">
+				Mouse hover example.
+		  </span>
+		  <a v-bind:href="url" target="blank">Click here</a>
+		</div>
+
+		<!-- Vue app 3 -->
+		<div id="app-3">
+			<span v-if="seen">You can {{mt}} me</span>
+    		<button v-on:click="wish">{{mt}}</button>
+		</div>
+
+
+		<!-- Vue app 4 -->
+		<div id="app-4">
+		  <ol>
+			<li v-for="todo in todos">
+			  {{ todo.text + '-' + todo.name }}
+			</li>
+		  </ol>
+		</div>
+
+		<!-- Vue app 5 -->
+		<div id="app-5">
+		  <p>{{ message }}</p>
+		  <button v-on:click="reverseMessage">Reverse Message</button>
+		  reset
+		</div>
+
+		<!-- Vue app 6 -->
+		<div id="app-6">
+		  <p>{{ header }}</p>
+		  <input v-model="message">
+		  <button v-on:click="submit">Submit</button>
+		  <button v-on:click="reset">Reset</button>
+		</div>
+
+		<!-- Vue app 7 -->
+		<div id="app-7">
+		  <ol>
+			<todo-item
+			  v-for="trimester in trimesterList"
+			  v-bind:todo="trimester"
+			  v-bind:key="trimester.id"></todo-item>
+		  </ol>
+		</div>
+
+
+		<script>
+			<!-- Vue app 1 -->
+			var app = new Vue({
+			  el: '#app',
+			  data: {
+				message: 'Hello Vue!',
+				test: 'Amit'
+			  }
+			})
+			
+			<!-- Vue app 2 -->
+			var app2 = new Vue({
+			  el: '#app-2',
+			  data: {
+				message: 'Page loaded on: ' + new Date().toLocaleString(),
+				url: 'https://vuejs.org/v2/guide/computed.html'
+			  }
+			})
+			
+			<!-- Vue app 3 -->
+			var app3 = new Vue({
+			  el: '#app-3',
+			  data: {
+				seen: true,
+				mt: 'Hide'
+			  },
+			  methods: {
+				  wish: function () {
+					if (this.seen == true)
+						{this.mt = 'Show'
+						this.seen = false}
+					else {this.mt = 'Hide'
+						 this.seen =  true;}
+				}
+			  }
+			})
+			
+			<!-- Vue app 4 -->
+			var app4 = new Vue({
+			  el: '#app-4',
+			  data: {
+				todos: [
+				  { text: 'Honda', name:'First'},
+				  { text: 'Subaru' , name:'Second'},
+				  { text: 'Mitsubishi', name:'Third' }
+				]
+			  }
+			})
+
+			app4.todos.push({ text: 'New item', name:'Fourth'})
+
+			<!-- Vue app 5 -->
+			var app5 = new Vue({
+			  el: '#app-5',
+			  data: {
+				message: 'Hello Vue.js!'
+			  },
+			  methods: {
+				reverseMessage: function () {
+				  this.message = this.message.split('').reverse().join('')
+				}
+			  }
+			})
+			
+			<!-- Vue app 6 -->
+			var app6 = new Vue({
+			  el: '#app-6',
+			  data: {
+				header: 'Form header',
+				message: 'This message is from Vue element'
+			  },
+			  methods: {
+				  submit: function () {
+				  this.message = 'You successfully changed submitted'
+				},				
+				reset: function () {
+				  this.message = 'This message is from Vue element'
+				}
+			  }
+			  
+			})
+			
+			
+			// Define a new component called todo-item
+			Vue.component('todo-item', {
+			  props: ['todo'],
+			  template: '<li>{{ todo.text }}</li>'
+			})
+
+			
+			<!-- Vue app 7 -->
+			var app7 = new Vue({
+			  el: '#app-7',
+			  data: {
+				trimesterList: [
+				  { id: 0, text: 'Trimester 1' },
+				  { id: 1, text: 'Trimester 2' },
+				  { id: 2, text: 'Trimester 3' }
+				]
+			  }
+			})
+
+		</script>
+	</body>	
+</html>
