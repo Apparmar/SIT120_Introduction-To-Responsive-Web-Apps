@@ -1,0 +1,133 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>test</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		
+	</head>
+	<body>	
+		<!-- example 1 -->
+		<div id="app">
+			<p v-bind:title="test">Example</p>
+			<input type = "text" v-model="message" placeholder="input something">
+			<p>Message is: {{message}}</p>
+		</div>
+		
+		<!-- example 2 Username password form -->
+		<div id="app2">
+			<form>
+				Name:</br>
+				<input type = "text" v-model.trim="un" placeholder="username"></br>
+				
+				Password:</br>	
+				<input v-model.trim="pw" placeholder="password" type="password"></br>
+				
+				Email:</br>
+				<input v-model.trim="eml" placeholder="email"></br>
+				<button v-on:click="buttonMethod">Submit</button>
+			</form>	
+			<p>Info: </br> {{un}} </br> {{pw}} </br> {{eml}}</p>
+		</div>
+		
+		<!-- example: Checkbox -->
+		<div id="checkboxes">
+			<input type="checkbox" id="Assignment 1" value="Assignment 1" v-model="checks" />
+			<label for="Assignment 1">Assignment 1</label>
+			<input type="checkbox" id="Assignment 2" value="Assignment 2" v-model="checks" />
+			<label for="Assignment 2">Assignment 2</label>
+			<input type="checkbox" id="Assignment 3" value="Assignment 3" v-model="checks" />
+			<label for="Assignment 3">Assignment 3</label>
+			<br />
+			<span>Assignments Done: {{checks}}</span>
+		</div>
+				
+		<br/>
+		<!-- example: Dropdown list -->
+		<div id="dropDown">
+		  <select v-model="dropDown">
+			<option v-for="option in options" v-bind:value="option.value">
+			  {{option.text}}
+			</option>
+		  </select>
+		  <span>Selected: {{dropDown}}</span>
+		</div>				
+
+				
+		<script>
+			// Example 1
+			var app = new Vue({
+				el:'#app',
+				data: {
+					test:"Example",
+					message:''
+				}
+			})
+			
+			
+			
+			var app2 =  new Vue({
+			  el: "#app2",
+			  data: {
+				  example2: 'Example 2',
+				  un: '',
+				  pw: '',
+				  eml: ''			  
+				},
+			   methods:{
+					buttonMethod: function () {
+					if (this.un) {
+						if (!(this.pw.length > 5 && this.pw.length))
+						{
+							alert("Password length must be minimum 5 and maximum 20 characters long");
+							this.pw = "";
+							return;
+						}
+						
+						if (!(this.eml.length > 0 && str.indexOf("@") > 0 && str.indexOf(".") > 0))
+						{
+							alert("Must specific valid email account");
+							this.eml = "";
+							return;							
+						}
+						
+					}
+					else
+					{
+						alert("Please enter data");
+					}
+				}
+			  }	
+			})
+			
+			
+			// Example: Checkbox
+			var app3 =  new Vue({
+			  el: "#checkboxes",
+			  data: {
+					checks: []
+				}
+			})
+			
+			// Example: Dropdown list
+			var app4 = new Vue({
+				el:"#dropDown",
+				data: {
+			//Vue.createApp({
+		    //data() {
+			//return {
+			  dropDown: 'C',
+			  options: [
+				{ text: 'Pass', value: 'P' },
+				{ text: 'Credit', value: 'C' },
+				{ text: 'Distinction', value: 'D' }
+			  ]
+			}
+			})
+			//}).mount('#v-model-select-dynamic')
+
+		</script>
+
+
+	</body>
+	
+</html>
