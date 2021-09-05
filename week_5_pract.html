@@ -1,0 +1,175 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>test</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+				
+	</head>
+	<body>
+		<!-- Example 1 -->
+		<div id="app-7">
+		  <ol>
+			<todo-item
+			  v-for="trimester in trimesterList"
+			  v-bind:todo="trimester"
+			  v-bind:key="trimester.id"></todo-item>
+		  </ol>
+		</div>
+
+		<!-- Example 2 -->
+		<div id="components-demo">
+		  <button-counter></button-counter>
+		</div>
+
+		<!-- Example 3 -->
+		<div id="components-demo2">
+		  <counter></counter>
+		</div>
+
+		<!-- Example 4 -->		
+		<div id = "blog-post-demo">
+			<blog-post v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title"></blog-post>
+		</div>
+
+
+		<!-- Example 5 -->
+		<div id="blog-post-two">
+			<div :style="{fontSize: postFontSize + 'em'}">
+			<blog-post-new v-for="post in posts" v-bind:key="post.id" v-bind:post="post" v-on:enlarge-text="postFontSize += $event">
+			</blog-post-new>
+			</div>
+		</div>
+		 
+		<!--  
+		This does not work for some reason. Tried exactly what the website suggests.
+		<div id="blog-post-two">
+			<div :style="{fontSize: postFontSize + 'em'}">
+			<blog-post-new v-for="post in posts" v-bind:key="post.id" v-bind:post="post" v-on:enlarge-text="onEnlargeText">
+			</blog-post-new>
+			</div>
+		</div>
+		-->
+		
+
+		<script>
+			// Example 1
+			// Define a new component called todo-item
+			Vue.component('todo-item', {
+			  props: ['todo'],
+			  template: '<li>{{ todo.text }}</li>'
+			})
+
+			
+			<!-- Vue app 7 -->
+			var app7 = new Vue({
+			  el: '#app-7',
+			  data: {
+				trimesterList: [
+				  { id: 0, text: 'Trimester 1' },
+				  { id: 1, text: 'Trimester 2' },
+				  { id: 2, text: 'Trimester 3' }
+				]
+			  }
+			})
+			
+
+			// Example 2
+			Vue.component('button-counter', {
+			  data: function () {
+				return {
+				  msg: "Click Here",
+				  count: 0,
+				  color: "blue"
+				}
+			  },
+			  template: '<button v-on:click="buttonFunction"><div v-bind:style="{ color }"> {{msg}}</div></button>',
+			  
+			  methods:{
+				buttonFunction:function(){
+					this.count = this.count + 2;
+					this.msg = "Even numbers: " + String(this.count);
+				}
+			  }
+			})
+			new Vue({ el: '#components-demo' })
+
+			// Example 3			
+			Vue.component('counter', {
+			  data: function () {
+				return {
+				  msg: "",
+				  count: 0,
+				  buttonTxt: "Click Here"
+				}
+			  },
+			  template: '<div><button v-on:click="buttonFunction">{{buttonTxt}}</button>{{msg}}</div>',
+			  
+			  methods:{
+			  buttonFunction:function(){
+					this.count = prompt(0);
+					if (this.count > 0) {
+						this.buttonTxt = "Times table for: " + String(this.count);
+						this.msg = "";
+						for (let i = 1; i <= 10; i++) {
+							let multiplication = this.count * i;
+							this.msg = this.msg + String(i) + " * " + String(this.count) + ' = ' + String(multiplication) + ', '; 
+						}
+					}
+				}
+			  }
+			})
+			new Vue({ el: '#components-demo2' })
+			
+
+			// Example 4			
+			Vue.component('blog-post', {
+				props: ['title'],
+				template: '<li>{{ title }}</li>'
+				})
+				
+			new Vue({
+				el: '#blog-post-demo',
+				data: {
+				posts: [
+				  { id: 1, title: 'Title 1' },
+				  { id: 2, title: 'Title 2' },
+				  { id: 3, title: 'Title 3' }
+				]
+			  }
+			})
+
+
+
+			// Example 5
+			// Updated Blog component
+			Vue.component('blog-post-new', {
+			  props: ['post'],	
+
+			/* This does not work for some reason. Tried exactly what the website suggests.
+			  methods:{
+				onEnlargeText: function (enlargeAmount) {
+					this.postFontSize += enlargeAmount;
+				}
+			  },
+			*/
+			  template: `<div class="blog-post"> <h3>{{ post.title }}</h3><button v-on:click="$emit('enlarge-text',0.1)">Enlarge text</button><div v-html="post.content"></div></div>`
+			})
+		
+			new Vue({
+				el: '#blog-post-two',
+				data: {
+				posts: [
+				  { id: 1, title: 'Title 1', content:'This is title 1' },
+				  { id: 2, title: 'Title 2', content:'This is title 2' },
+				  { id: 3, title: 'Title 3', content:'This is title 3' }
+				],
+				postFontSize: 1
+			  }
+			})
+			
+		</script>
+
+
+	</body>
+	
+</html>
