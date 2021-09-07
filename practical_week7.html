@@ -1,0 +1,116 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>test</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		
+	</head>
+	<body>	
+		<!-- Global Registration-->
+		<div id = 'app'>
+			<global-registration v-bind:name="name" v-bind:age="age" v-bind:phone="phone"></global-registration>
+		</div>
+		
+
+		
+		<!-- local Registration-->
+		<div id = 'appA'>
+			<local-registration v-bind:name="name" v-bind:age="age" v-bind:phone="phone"></local-registration>
+		</div>
+				
+		<!-- Prop Demo-->
+		<div id = 'appB'>
+			<prop-demo v-bind:name="name" v-bind:sid="sid" v-bind:show="show" v-bind:mobile="mobile" v-on:show-mobile="showMobile" v-bind:buttontxt="buttontxt"></prop-demo>
+		</div>
+
+
+		<!-- Slots-->
+		<div id="appC">
+			<a-button><p slot="para">This is an example slot.</p><button slot="btn">Changed button</button></a-button>
+			<a-button></a-button>			
+		</div>
+
+
+		<script>			
+		// Global Registration
+			Vue.component("global-registration",
+				{
+				props: {name: String,
+						age: Number,
+						phone: Number						
+				}, template:'<div><h2>Global Component</h2></br> Name: {{name}} </br>Age: {{age}} </br> Phone: {{phone}}</div>'
+			})
+			
+			new Vue({
+				el: "#app",
+				data: {name:'Amit'
+				,age: 37
+				,phone: 1234}
+			})
+			
+		// local Registration
+			var CompA = 
+				{props: {name: String,
+						age: Number,
+						phone: Number						
+				}, template:'<div><h2>Local Component!</h2></br> Name: {{name}} </br>Age: {{age}} </br> Phone: {{phone}}</div>'
+			}
+			
+			new Vue({
+				el: "#appA",
+				data: {name:'Amit'
+				,age: 37
+				,phone: 1234},
+				components: {'local-registration': CompA}
+			})
+
+		// Props Example
+		
+			var CompB = 
+				{props: {name: String,
+						sid: Number,
+						show: Boolean,
+						mobile: String,
+						buttontxt: String
+				}, template:`<div></br></br>Hello. My name is {{name}}. My student ID is {{sid}}. Contact: {{mobile}}</br><button>{{buttontxt}} Mobile</button></div>`
+			}
+			new Vue({
+				el: "#appB",
+				data: {name:'Amit',
+					sid:123123213,
+					show: false,
+					mobile:'7777777777',
+					buttontxt:"Hide"
+				},
+				components: {'prop-demo': CompB},
+				methods: {
+					showMobile: function () {
+					if (this.show == false) {
+						this.mobile = this.mobile.substring(0, 5) + "xxxx";
+						this.buttontxt = "Show";
+					}
+					else{this.mobile = '7777777777';
+						 this.buttontxt = "Hide";
+						}
+					this.show = !this.show;
+					}
+					
+					}
+			})
+		
+			// Slot Example
+			
+			Vue.component('a-button', {
+				template:'<div></br></br><p><slot name="para">This is default slot value</slot></p><button><slot name="btn">OK</slot></button></div>'
+			})
+			
+			new Vue({
+				el:"#appC"
+			})
+
+		</script>
+		
+
+	</body>
+	
+</html>
