@@ -72,7 +72,7 @@
 						show: Boolean,
 						mobile: String,
 						buttontxt: String
-				}, template:`<div></br></br>Hello. My name is {{name}}. My student ID is {{sid}}. Contact: {{mobile}}</br><button>{{buttontxt}} Mobile</button></div>`
+				}, template:`<div></br></br>Hello. My name is {{name}}. My student ID is {{sid}}. Contact: {{mobile}}</br><button v-on:click="$emit(\'show-mobile\',0.1)">{{buttontxt}} Mobile</button></div>`
 			}
 			new Vue({
 				el: "#appB",
